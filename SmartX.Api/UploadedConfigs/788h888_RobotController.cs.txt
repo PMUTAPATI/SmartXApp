@@ -1,0 +1,61 @@
+RobotController.cs
+
+
+using System;
+using System.Collections.Generic;
+
+public class RobotController
+{
+    private Stack<string> commandHistory = new Stack<string>();
+
+    public void Push(string command)
+    {
+        commandHistory.Push(command);
+        Console.WriteLine($"Command issued: \"{command}\"");
+    }
+
+    public string Peek()
+    {
+        if (commandHistory.Count > 0)
+        {
+            string lastCommand = commandHistory.Peek();
+            Console.WriteLine($"Peeked at top command: \"{lastCommand}\"");
+            return lastCommand;
+        }
+
+        Console.WriteLine("Cannot peek: Command history is empty.");
+        return null;
+    }
+
+    public string Pop()
+    {
+        if (commandHistory.Count > 0)
+        {
+            string undoneCommand = commandHistory.Pop();
+            Console.WriteLine($"Undoing command: \"{undoneCommand}\"");
+            return undoneCommand;
+        }
+
+        Console.WriteLine("Error: Cannot undo. Command history is empty.");
+        return null;
+    }
+
+    public void ShowCommandHistory()
+    {
+        Console.WriteLine("\n--- Active Command History (Newest to Oldest) ---");
+
+        if (commandHistory.Count == 0)
+        {
+            Console.WriteLine("[No active commands]");
+            Console.WriteLine("--------------------------------------------------\n");
+            return;
+        }
+
+        foreach (string command in commandHistory)
+        {
+            Console.WriteLine($"- {command}");
+        }
+
+        Console.WriteLine("--------------------------------------------------\n");
+    }
+}

@@ -1,0 +1,96 @@
+﻿<Window x:Class="SmartXApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Smart-X IoT Gateway" Height="600" Width="950"
+        Background="#1E1E2E" Foreground="White">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Smart-X Application Gateway" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,20" 
+                   Foreground="#61AFEF"/>
+
+        <TabControl Grid.Row="1" Background="#282C34" BorderBrush="#3E4451">
+
+            <TabItem Header="1. Sensor Data Ingestion &amp; Telemetry" IsSelected="True">
+                <Grid Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Enhanced DataGrid with Dynamic Alert Badges -->
+                    <DataGrid Grid.Column="0" 
+                              ItemsSource="{Binding TelemetryStream}" 
+                              AutoGenerateColumns="False" 
+                              Background="#1E1E2E"
+                              RowBackground="#282C34"
+                              GridLinesVisibility="Horizontal"
+                              HorizontalGridLinesBrush="#3E4451"
+                              CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Timestamp" Binding="{Binding Timestamp, StringFormat=\{0:HH:mm:ss\}}" Width="80"/>
+                            <DataGridTextColumn Header="Device ID" Binding="{Binding DeviceId}" Width="110"/>
+                            <DataGridTextColumn Header="Moisture" Binding="{Binding SoilMoisture, StringFormat=\{0\}%}" Width="70"/>
+                            <DataGridTextColumn Header="Power (W)" Binding="{Binding PowerWattage}" Width="75"/>
+
+                            <!-- Dynamic Engagement Status Badge -->
+                            <DataGridTemplateColumn Header="System Status" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="4" Padding="6,2" HorizontalAlignment="Left">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="Background" Value="#2E7D32"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsAnomaly}" Value="True">
+                                                            <Setter Property="Background" Value="#C62828"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <TextBlock Text="{Binding AlertMessage}" Foreground="White" FontWeight="SemiBold" FontSize="11"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                        <TextBlock Text="Sensor Registration" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="MAC Address:"/>
+                        <TextBox x:Name="TxtMac" Margin="0,2,0,10" Background="#3E4451" Foreground="White"/>
+
+                        <TextBlock Text="Deployment Zone:"/>
+                        <TextBox x:Name="TxtZone" Margin="0,2,0,10" Background="#3E4451" Foreground="White"/>
+
+                        <TextBlock Text="Category:"/>
+                        <ComboBox x:Name="CmbCategory" Margin="0,2,0,15">
+                            <ComboBoxItem Content="Environmental" IsSelected="True"/>
+                            <ComboBoxItem Content="Power Consumption"/>
+                            <ComboBoxItem Content="Actuator"/>
+                        </ComboBox>
+
+                        <Button Content="Attach Config / Log File" 
+                                Click="BtnUploadFile_Click" 
+                                Padding="8" 
+                                Background="#98C379" 
+                                Foreground="Black" 
+                                FontWeight="Bold"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="2. Real-Time Command Stream" IsEnabled="False"/>
+            <TabItem Header="3. Network Topology &amp; Routing" IsEnabled="False"/>
+
+        </TabControl>
+    </Grid>
+</Window>

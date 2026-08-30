@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SmartX.Api/SmartX.Api.csproj" Id="c735cbbf-5fb4-49f5-bcfa-281a3957ea75" />
+  <Project Path="SmartXApp/SmartXApp.csproj" />
+</Solution>
