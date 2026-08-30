@@ -7,7 +7,7 @@ namespace SmartXApp.Models
         public string DeviceId { get; set; } = string.Empty;
         public string DeviceType { get; set; } = string.Empty;
         public DateTime Timestamp { get; set; } = DateTime.Now;
-
+        
         // Sensor readings
         public float SoilMoisture { get; set; }
         public int PowerWattage { get; set; }
