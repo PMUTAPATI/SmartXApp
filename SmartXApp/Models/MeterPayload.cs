@@ -8,8 +8,6 @@
 
         public MeterPayload() { }
 
-        // Reference: Microsoft Docs - C# Operator Overloading
-        // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/operator-overloading
         public MeterPayload(double powerUsageKw)
         {
             PowerUsageKw = powerUsageKw;
@@ -25,3 +23,5 @@
         }
     }
 }
+// Reference: Microsoft Docs - C# Operator Overloading
+// https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/operator-overloading
