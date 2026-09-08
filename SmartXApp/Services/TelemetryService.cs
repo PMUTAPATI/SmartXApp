@@ -20,7 +20,7 @@ namespace SmartXApp.Services
             else if (data.SoilMoisture < 10.0f || data.SoilMoisture > 90.0f)
             {
                 data.IsAnomaly = true;
-                data.AlertMessage = $"Moisture out of bounds: {data.SoilMoisture}%";
+                data.AlertMessage = $"Moisture out of bounds: {data.SoilMoisture}";
             }
         }
     }
