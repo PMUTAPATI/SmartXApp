@@ -3,6 +3,7 @@ using SmartXApp.Models;
 
 namespace SmartXApp.Services
 {
+    /// Handles validation and anomaly detection for incoming telemetry data.
     public class TelemetryService
     {
         public void ValidateTelemetry(TelemetryData data)
