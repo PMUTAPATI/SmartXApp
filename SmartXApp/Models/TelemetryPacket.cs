@@ -13,6 +13,7 @@ namespace SmartXApp.Models
         {
             DeviceMac = deviceMac;
             Value = value;
+            Value
         }
     }
 }
