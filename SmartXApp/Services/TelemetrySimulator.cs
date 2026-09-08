@@ -7,6 +7,7 @@ namespace SmartXApp.Services
     {
         private readonly Random rng = new Random();
 
+        /// Generates a single simulated telemetry reading for a given device.
         public TelemetryData GenerateSensorReading(string deviceId)
         {
             var isSpike = rng.Next(1, 100) <= 15;
