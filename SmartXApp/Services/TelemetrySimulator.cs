@@ -13,7 +13,7 @@ namespace SmartXApp.Services
             var isSpike = rng.Next(1, 100) <= 15;
             var power = isSpike ? rng.Next(1500, 3000) : rng.Next(100, 600);
 
-            // Assign
+            // Assign wattage
             return new TelemetryData
             {
                 DeviceId = deviceId,
