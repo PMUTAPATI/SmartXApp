@@ -17,7 +17,7 @@ namespace SmartXApp.Services
                 DeviceId = deviceId,
                 DeviceType = "ESP32-HydroNode",
                 Timestamp = DateTime.Now,
-                SoilMoisture = (float)Math.Round(rng.NextDouble() * 100, ),
+                SoilMoisture = (float)Math.Round(rng.NextDouble() * 100, 2),
                 PowerWattage = power,
                 ValveState = rng.Next(0, 2) == 1,
                 IsConnected = true
