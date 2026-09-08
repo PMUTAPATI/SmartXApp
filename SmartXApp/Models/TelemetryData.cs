@@ -13,7 +13,7 @@ namespace SmartXApp.Models
         public int PowerWattage { get; set; }
         public bool ValveState { get; set; }
 
-        public bool ValveState { get; set; }
+        
         // Status indicators
         public bool IsAnomaly { get; set; }
         public bool IsConnected { get; set; } = true;
