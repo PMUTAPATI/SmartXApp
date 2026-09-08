@@ -13,7 +13,7 @@
             PowerUsageKw = powerUsageKw;
         }
 
-        // Binary '+' operator overload to sum power usage across meters
+        // Binary '+' operator overload to sum power usage across the meters
         public static MeterPayload operator +(MeterPayload a, MeterPayload b)
         {
             return new MeterPayload
@@ -23,5 +23,6 @@
         }
     }
 }
+
 // Reference: Microsoft Docs - C# Operator Overloading
 // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/operator-overloading
