@@ -19,7 +19,7 @@ namespace SmartXApp.Models
                     return true;
             }
 
-            return false;fa
+            return false;
         }
     }
 }
